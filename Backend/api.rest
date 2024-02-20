@@ -1,0 +1,78 @@
+###
+POST http://localhost:1500/signup/verify
+Content-Type: application/json
+
+{
+    "username" : "cris",
+    "email" :"crisece123@gmail.com",
+    "password":"123456789"
+}
+###
+GET http://localhost:1500/signup/eyJhbGciOiJIUzI1NiJ9.Y3Jpc2VjZTEyM0BnbWFpbC5jb20.fwqcDVW8Es2LEU9VymnImAv5PpDot0A24XzN9teTn5g
+
+###
+POST http://localhost:1500/signin/
+Content-Type: application/json
+
+{
+    "email" :"crisece123@gmail.com",
+    "password":"Cris@123"
+}
+
+###
+GET  http://localhost:1500/dashboard/
+Authorization: eyJhbGciOiJIUzI1NiJ9.Y3Jpc2VjZTEyM0BnbWFpbC5jb20.LyEO0SyY87yzawBo1DWzPjHWpdzr5Ze13Kgac2H1mis
+
+###
+POST http://localhost:1500/resetPassword/
+Content-Type: application/json
+
+{
+    "email":"crisece123@gmail.com"
+}
+
+###
+POST http://localhost:1500/resetPassword/verifyCode
+Content-Type:application/json
+
+{
+   "email":"crisece123@gmail.com",
+   "verificationCode":"592434"
+}
+
+###
+POST http://localhost:1500/resetPassword/newPassword
+Content-Type: application/json
+
+{
+    "email":"crisece123@gmail.com",
+   "password":"Cris@123"
+}
+###
+GET  
+
+Authorization:'crisece123@gmail.com'
+###
+POST http://localhost:1500/userProfile/edit
+Authorization: 'crisece123@gmail.com'
+Content-Type: application/json
+
+{
+    "personal" : {
+        "username":"vishnu",
+        "age" :"",
+        "gender":""
+    },
+    "contact":{
+        "email":"devcris777@gamil.com",
+        "phone":""
+    },
+    "club":{
+        "clubname":"kpm fc",
+        "position":""
+    },
+    "location":{
+        "state":"tamil nadu",
+        "district":""
+    }
+}
