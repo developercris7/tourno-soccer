@@ -1,0 +1,143 @@
+#offcanvas{
+    width: 500px;
+    height: 100vh;
+}
+.profile-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.profile-wrapper{
+    width: 100%;
+    height: 88vh;
+    padding: 10px;
+}
+.profile-box{
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    font-size: 18px;
+    position: relative;
+}
+.profile{
+    width: 60px;
+    height: 60px;
+    background-color: rgb(206, 46, 46);
+    border-radius: 50%;
+    margin: auto 0px;
+}
+.profile-info{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.profile-tabs{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+.profile-tabs > span{
+    margin: 0px 10px;
+    font-size: 18px;
+    text-transform: capitalize;
+    width: 100%;
+}
+.active{
+    border-bottom: 2px solid blue;
+    padding-bottom: 5px;
+}
+
+.info-box{
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+.info-container{
+    width: 200%;
+    height: 100%;
+    transition: transform 0.2s;
+    display: flex;
+}
+.info-1{
+    width: 50%;
+    height: 80%;
+   padding: 5px 10px ;
+   overflow: auto;
+   scrollbar-width: none;
+}
+
+.info-2{
+    width: 100%;
+}
+.tab-animate{
+    transform: translateX(-50%);
+}
+
+
+/* .display-info{
+    width: 100%;
+    min-height: 50px;
+}
+
+.info{
+    width: 100%;
+    background-color: aqua;
+    border-radius:5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    margin: 10px 0px;
+    padding:10px;
+    font-size: 16px;
+} */
+
+/* Form field */
+/* .section{
+    width: 100%;
+    margin: 5px 0px;
+    font-size: 18px;
+    padding: 5px ;
+    position: relative;
+    font-weight: 600;
+}
+
+.drop{
+    position: absolute;
+    width: 95%;
+    margin:5px 1%;
+    color: white;
+    padding: 0;
+    z-index: 10;
+    border-radius: 10px;
+}
+.options{
+    padding: 5px;
+    margin:0;
+    background-color: blueviolet;
+    border: none;
+    outline: none;
+}
+.info-head{
+    color: crimson;
+    font-size: 20px;
+}
+
+.select{
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    outline: none;
+    border: 1px solid #8f8f8f;
+} */
+
+
+

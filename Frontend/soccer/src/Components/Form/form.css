@@ -1,0 +1,38 @@
+.label{
+    text-transform: capitalize;
+    display: flex; 
+    align-items: center;
+    margin: 2px 0px;
+}
+.input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom:2px solid rgb(43, 42, 42) ;
+    font-size: 14px;
+    transition: border-bottom .3s;
+}
+
+.err-text{
+    font-size: 14px;
+    color: red;
+}
+
+.err-input{
+    border-bottom-color:#e04040;
+}
+
+.input:focus{
+    border-bottom-color:cornflowerblue;
+    outline: none;
+}
+
+.submit-btn{
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 7px;
+      background-color: cornflowerblue;
+      margin-top: 10px;
+      border-radius: 5px;
+}

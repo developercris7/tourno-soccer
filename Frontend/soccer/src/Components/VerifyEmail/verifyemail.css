@@ -1,0 +1,38 @@
+.email-container{
+    width: 100%;
+    height: 100vh;
+    /* background-color: cornflowerblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.email-container > p{
+    margin: 5px 0px;
+}
+.email-container > h2 {
+    color: cornflowerblue;
+}
+.go-back-btn{
+    margin: 5px 0px;
+    border: none;
+    outline: 0;
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: cornflowerblue;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+.go-back-btn:hover{
+    padding: 6px 16px;
+}
+.email-img{
+    width: 150px;
+    height: 150px;
+    margin: 5px 0px;
+}
