@@ -6,12 +6,13 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { IoMdClose } from "react-icons/io";
 import UserProfile from "../UserProfile/UserProfile";
 
-const Header = ({userImage,userData,userId,setTrigger}) => {
+const Header = ({userImage,userData,userId,fetchData}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   // console.log(profileInfos)
-  return (
+  // console.log(userData);
+    return (
     <div>
       <header>
         <HiMenuAlt1 className="d-md-none fs-2" onClick={handleShow} />
@@ -44,7 +45,7 @@ const Header = ({userImage,userData,userId,setTrigger}) => {
           </Offcanvas.Body>
         </Offcanvas>
 
-      <UserProfile userImage={userImage} userData={userData} userId={userId} setTrigger={setTrigger}/>
+      <UserProfile userImage={userImage} userData={userData} userId={userId} fetchData={fetchData}/>
       </header>
     </div>
   );

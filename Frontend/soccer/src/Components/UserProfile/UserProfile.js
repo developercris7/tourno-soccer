@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./userprofile.css";
 import { FaUser } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
@@ -10,14 +10,12 @@ import url from '../../config'
 import UploadImage from '../Upload/UploadImage'
 import axios from 'axios'
 
-const UserProfile = ({userImage,userData,userId,setTrigger}) => {
+const UserProfile = ({userImage,userData,userId,fetchData}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [tabs, setTabs] = useState("profile");
-  
   const [profileImage,setProfileImage] = useState('')
-
   const profileTabs = [
     {
       id: 1,
@@ -31,29 +29,14 @@ const UserProfile = ({userImage,userData,userId,setTrigger}) => {
     },
   ];
   const [imageValid,setImageValid] = useState({})
+  const [formData, setFormData] = useState(null);
 
-  const [formData, setFormData] = useState({
-    personal: {
-      username: "cris",
-      gender: "male",
-      age: "12",
-    },
-    contact: {
-      email: "",
-      phone: "",
-    },
-    club: {
-      clubname: "",
-      position: "",
-    },
-    location: {
-      state: "india",
-      district: "",
-    },
-  });
-
-  // const formData = {...userData}
-
+  useEffect(()=>{
+    if(userData){
+    setFormData(JSON.parse(JSON.stringify(userData)));
+    }
+  },[userData]);
+  
   const handleImageUpload = async() => {
        if(profileImage === ''){
         setImageValid({error : "upload Image first"})
@@ -66,12 +49,16 @@ const UserProfile = ({userImage,userData,userId,setTrigger}) => {
           "Content-type": "multipart/form-data" }})        
           if(response.data === "uploaded"){
             setProfileImage('')
+            // setTrigger(!trigger)
+            fetchData();
             setTabs('profile')
-            setTrigger(true)
+            setImageValid({})
            }
        }
   }
-  const handleUpdateProfile = async() => {
+
+  const handleUpdateProfile = async(e) => {
+    e.preventDefault();
           const response = await axios.post(`${url}userProfile/edit`,formData,{headers : {
             Authorization : `${userId}`
           }})
@@ -80,8 +67,8 @@ const UserProfile = ({userImage,userData,userId,setTrigger}) => {
           }else if(response.data === "Server Busy"){
             alert("Server busy in update")
           }else if(response.data === "Updated"){
+            fetchData();
             setTabs('profile')
-            setTrigger(true)
           }
   }
   
@@ -157,7 +144,7 @@ const UserProfile = ({userImage,userData,userId,setTrigger}) => {
                 >
                   <div className="info-1">
                     
-                    {Object.entries(formData).map(([category, categoryData]) =>
+                    {userData && Object.entries(userData).map(([category, categoryData]) =>
                       Object.entries(categoryData).some(
                         ([key, value]) => value !== ""
                       ) ? (

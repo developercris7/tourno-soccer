@@ -7,13 +7,7 @@ const UserProfileForm = ({formData,setFormData,handleUpdateProfile }) => {
       title: "personal",
       fields: [
         { label: "username", name: "username", type: "text" },
-        {
-          label: "gender",
-          name: "gender",
-          type: "select",
-          options: ["Male", "Female"],
-          flex: { label: "age", name: "age", type: "text" },
-        },
+        { label: "age", name: "age", type: "text" },
       ],
     },
     {
@@ -37,35 +31,11 @@ const UserProfileForm = ({formData,setFormData,handleUpdateProfile }) => {
     }
   ];
 
-  // const [formData, setFormData] = useState({
-  //   personal: {
-  //     username: "cris",
-  //     gender: "male",
-  //     age: "12",
-  //   },
-  //   contact: {
-  //     email: "",
-  //     phone: "",
-  //   },
-  //   club: {
-  //     clubname: "",
-  //     position: "",
-  //   },
-  //   location: {
-  //     state: "india",
-  //     district: "",
-  //   },
-  // });
-
-
   const handleChange = (e, title) => {
     const obj = { ...formData };
     const { name, value } = e.target;
     obj[title][name] = value.toLowerCase();
-    setFormData(obj);
-    console.log("-----")
-    console.log(obj)
-    console.log(formData)
+    setFormData(obj); 
   };
 
   return (
@@ -84,7 +54,7 @@ const UserProfileForm = ({formData,setFormData,handleUpdateProfile }) => {
                     <input
                       name={field.flex.name}
                       type={field.flex.type}
-                  value={formData[cat.title][field.flex.name]}
+                  value={(formData) ? (formData[cat.title][field.flex.name]) : ('')}
                       onChange={(e) => handleChange(e, cat.title)}
                       className="input"
                       autoComplete="off"
@@ -113,7 +83,7 @@ const UserProfileForm = ({formData,setFormData,handleUpdateProfile }) => {
                   </label>
                   <input
                     name={field.name}
-                    value={formData[cat.title][field.name]}
+                    value={(formData) ? (formData[cat.title][field.name]) : ('')}
                     type={field.type}
                     onChange={(e) => handleChange(e, cat.title)}
                     className="input"

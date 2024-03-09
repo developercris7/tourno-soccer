@@ -12,36 +12,39 @@ const Dashboard = () => {
   const [userId,setUserId] = useState('')
   const [trigger,setTrigger] = useState(false)
 
+  const fetchData = async () => {
+    const token = localStorage.getItem("userInfo");
+    const userInfo = await localStorage.getItem("userInfo");
+    if (userInfo) {
+      const data = await axios.get(`${url}dashboard`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+      
+      const userProfile = data.data.email;
+      setUserId(userProfile)
+      const userProfileInfo = await axios.get(`${url}userProfile/get`, {
+        headers: {
+          Authorization: `${userProfile}`,
+        },
+      });
+
+      setUserImage(userProfileInfo.data.image);
+      setUserData(userProfileInfo.data.info);
+      // console.log(userData)
+    } else {
+      navigate("/");
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const token = localStorage.getItem("userInfo");
-      const userInfo = await localStorage.getItem("userInfo");
-      if (userInfo) {
-        const data = await axios.get(`${url}dashboard`, {
-          headers: {
-            Authorization: `${token}`,
-          },
-        });
-        const userProfile = data.data.email;
-        setUserId(userProfile)
-        const userProfileInfo = await axios.get(`${url}userProfile/get`, {
-          headers: {
-            Authorization: `${userProfile}`,
-          },
-        });
-        setUserImage(userProfileInfo.data.image);
-        setUserData(userProfileInfo.data.info);
-        // console.log(userData)
-      } else {
-        navigate("/");
-      }
-    };
     fetchData();
-  }, [navigate,trigger]);
+  }, []);
   // console.log(userId)
   return (
     <div>
-      <Header userImage={userImage} userData={userData} userId={userId} setTrigger={setTrigger}/>
+      <Header userImage={userImage} userData={userData} userId={userId} fetchData={fetchData}/>
       <Navbar />
     </div>
   );
